@@ -15,19 +15,29 @@ selected_players = st.sidebar.multiselect(
     "🎯 Select Players", df['Player'].unique(), default=df['Player'].unique())
 
 filtered_df = df[df['Player'].isin(selected_players)]
+st.markdown("""
+    <h1 style='text-align: center; color: #2e4053;'>📊 IPL 2024 Batting Dashboard</h1>
+    <h4 style='text-align: center; color: #7d3c98;'>powered by <span style='color: #2e86c1;'>3dots</span></h4>
+    <hr style='border: 1px solid #bbb;'>
+    """, unsafe_allow_html=True)
 
 # Main Tabs
 tab1, tab2, tab3 = st.tabs(["🏏 Overview", "📊 Visualizations", "📋 Player Stats"])
 
 # ---------------------- TAB 1: Overview ----------------------
 with tab1:
-    st.markdown("## 🏏 IPL 2024 Batting Overview")
+    st.markdown("""
+    <h1 style='text-align: center; color: #2e4053;'>📊 IPL 2024 Batting Dashboard</h1>
+    <h4 style='text-align: center; color: #7d3c98;'>powered by <span style='color: #2e86c1;'>3dots</span></h4>
+    <hr style='border: 1px solid #bbb;'>
+    """, unsafe_allow_html=True)
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Total Runs", f"{filtered_df['Runs'].sum()}")
-    col2.metric("Avg Strike Rate", f"{filtered_df['SR'].mean():.2f}")
-    col3.metric("Total Matches", f"{filtered_df['Matches'].sum()}")
-    col4.metric("Avg Consistency", f"{filtered_df['Consistency'].mean():.2f}")
+    col1.metric("🏏 Total Runs", f"🔢 {filtered_df['Runs'].sum()}")
+    col2.metric("⚡ Avg Strike Rate", f"📈 {filtered_df['SR'].mean():.2f}")
+    col3.metric("🎯 Matches Played", f"📊 {filtered_df['Matches'].sum()}")
+    col4.metric("💪 Avg Consistency", f"🧮 {filtered_df['Consistency'].mean():.2f}")
+
 
     st.markdown("---")
     st.markdown("### 🔥 Top 5 Run Scorers")
